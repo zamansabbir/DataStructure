@@ -14,7 +14,6 @@ void findPair(int b[],int m, int sum){
                     res_i=i;
                     res_j=j;
                 }
-
         }
     }
     std::cout<<b[res_i]<<" "<<b[res_j]<<std::endl;
