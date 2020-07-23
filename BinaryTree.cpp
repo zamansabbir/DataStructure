@@ -13,6 +13,7 @@ BTree* createNode(int data){
      return temp;
 }
 
+
 BTree* insertBTree(BTree* root,int data){
     if(root==NULL){
         root=createNode(data);
@@ -40,17 +41,52 @@ BTree* insertBTree(BTree* root,int data){
     return root;
 }
 
-void traversalBTreeInorder(BTree* root){
+void InordertraversalBTree(BTree* root){
     if(root==NULL){
         return;
     }
-    traversalBTreeInorder(root->left);
+    InordertraversalBTree(root->left);
     std::cout<<root->data<<" ";
-    traversalBTreeInorder(root->right);
+    InordertraversalBTree(root->right);
     
 }
-void traversalBTreePreorder(BTree* root){
+void PreordertraversalBTree(BTree* root){
+    if(root==NULL){
+        return;
+    }
+    std::cout<<root->data<<" ";
+    PreordertraversalBTree(root->left);
+    PreordertraversalBTree(root->right);
+}
 
+void PostordertraversalBTree(BTree* root){
+    if(root==NULL){
+        return;
+    }
+   
+    PostordertraversalBTree(root->left);
+    PostordertraversalBTree(root->right);
+     std::cout<<root->data<<" ";
+}
+
+//Level Order or Breadth first Traversal
+void LevelordertraversalBTree(BTree* root){
+    if(root==NULL){
+        return;
+    }
+    std::queue<BTree*> q;
+    q.push(root);
+    while(!q.empty()){
+        BTree* temp=q.front();
+        std::cout<<temp->data<<" ";
+        if(temp->left!=NULL){
+            q.push(temp->left);
+        }
+        if(temp->right!=NULL){
+            q.push(temp->right);
+        }
+        q.pop();
+    }
 }
 
 int main(){
@@ -62,6 +98,12 @@ int main(){
     root=insertBTree(root,7);
     root=insertBTree(root,20);
     root=insertBTree(root,21);
-    traversalBTreeInorder(root);
+    InordertraversalBTree(root);
+    std::cout<<std::endl;
+    LevelordertraversalBTree(root);
+    std::cout<<std::endl;
+    PreordertraversalBTree(root);
+    std::cout<<std::endl;
+    PostordertraversalBTree(root);
     return 0;
 }
