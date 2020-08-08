@@ -88,16 +88,26 @@ void LevelordertraversalBTree(BTree* root){
         q.pop();
     }
 }
+BTree* invertBinaryTree(BTree* root){
+ if(root==NULL){
+     return root;
+ }
+  BTree* left_dummy= invertBinaryTree(root->left);
+  BTree* right_dummy= invertBinaryTree(root->right);
+  root->left=right_dummy;
+  root->right=left_dummy;
+
+}
 
 int main(){
     BTree* root=NULL;
-    root=insertBTree(root,5);
-    root=insertBTree(root,10);
-    root=insertBTree(root,15);
-    root=insertBTree(root,8);
+    root=insertBTree(root,4);
+    root=insertBTree(root,2);
     root=insertBTree(root,7);
-    root=insertBTree(root,20);
-    root=insertBTree(root,21);
+    root=insertBTree(root,1);
+    root=insertBTree(root,3);
+    root=insertBTree(root,6);
+    root=insertBTree(root,9);
     InordertraversalBTree(root);
     std::cout<<std::endl;
     LevelordertraversalBTree(root);
@@ -105,5 +115,12 @@ int main(){
     PreordertraversalBTree(root);
     std::cout<<std::endl;
     PostordertraversalBTree(root);
+    std::cout<<std::endl;
+
+    root=invertBinaryTree(root);
+    std::cout<<"Reverse Tree"<<std::endl;
+
+    LevelordertraversalBTree(root);
+    std::cout<<std::endl;
     return 0;
 }
