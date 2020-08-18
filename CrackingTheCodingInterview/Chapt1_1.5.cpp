@@ -38,12 +38,38 @@ if we find space, 3 characters taken, nextupdate should happen after another 3 p
 new_size=new_size-3
 S ab b%20bir
 */
+#include<iostream>
+#include<string.h>
 
-void insertCharacters(char* s){
-
+void insertCharacters(char* s, int length){
+    //count the number of spaces
+    int space_count=0;
+    for(int i=0;i<length;i++){
+        space_count=(*(s+i)==' ')?space_count+1:space_count;
+    }
+    int new_length=length+2*space_count;
+    //std::cout<<space_count<<std::endl;
+    *(s+new_length)='\0';
+    for(int i=length-1;i>=0;i--){
+        if(*(s+i)==' '){
+            *(s+new_length-1)='0';
+            *(s+new_length-2)='2';
+            *(s+new_length-3)='%';
+            new_length=new_length-3;
+        }else{
+            *(s+new_length-1)=*(s+i);
+            new_length--;
+        }
+        
+    }
 }
 
 int main(){
+    char s[]="S ab bir"; //8 char, 2 space, new_length=8+2*2
+   // std::cout<<"length"<<strlen(s)<<std::endl;
 
+   // int l=strlen(s);
+   insertCharacters(s, strlen(s));
+   std::cout<<s<<std::endl;
     return 0;
 }
