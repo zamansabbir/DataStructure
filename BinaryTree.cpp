@@ -96,7 +96,7 @@ BTree* invertBinaryTree(BTree* root){
   BTree* right_dummy= invertBinaryTree(root->right);
   root->left=right_dummy;
   root->right=left_dummy;
-
+return root;
 }
 
 int main(){
