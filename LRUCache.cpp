@@ -24,7 +24,8 @@ public:
             //dq.erase(map[key]);
             dq.erase(map[key]);
             //pair<int,int> p(key,value);
-           dq.push_front(value);
+            dq.push_front(value);
+            map[key]=dq.begin();
             return value.second;
         }
     }
