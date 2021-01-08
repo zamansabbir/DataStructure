@@ -108,13 +108,13 @@ int main(){
     root=insertBTree(root,3);
     root=insertBTree(root,6);
     root=insertBTree(root,9);
-    InordertraversalBTree(root);
+    InordertraversalBTree(root);// depth first
     std::cout<<std::endl;
     LevelordertraversalBTree(root);
     std::cout<<std::endl;
-    PreordertraversalBTree(root);
+    PreordertraversalBTree(root);//depth first
     std::cout<<std::endl;
-    PostordertraversalBTree(root);
+    PostordertraversalBTree(root); // depth first
     std::cout<<std::endl;
 
     root=invertBinaryTree(root);
