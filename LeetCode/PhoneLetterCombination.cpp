@@ -33,7 +33,7 @@ std::vector<std::string> letterCombinations(std::string digits) {
 
     }
 int main(){
-    std::string digits="234";
+    std::string digits="2345";
     std::vector<std::string> output=letterCombinations(digits);
 
     return 0;
